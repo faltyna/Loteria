@@ -1,0 +1,42 @@
+﻿@model Loteria.Models.DbModels.Odpowiedz
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Odpowiedz</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pytanie.tresc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pytanie.tresc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tresc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tresc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.poprawnoscOdpowiedzi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.poprawnoscOdpowiedzi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.odpowiedzId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Loteria.Models.DbModels.Uczestnik>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    h2 {
+        color: darkblue;
+        font-family:monospace;
+    }
+
+    .table {
+        background-color: aliceblue;
+    }
+</style>
+
+<h2>Uczestnicy</h2>
+
+<p>
+    @Html.ActionLink("Dodaj nowego", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.imie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pseudonim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nazwisko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pseudonim)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.uczestnikId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.uczestnikId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.uczestnikId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,54 @@
+﻿@model Loteria.Models.DbModels.Uczestnik
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<style>
+    h2 {
+        color: darkblue;
+        font-family: monospace;
+    }
+
+    h4 {
+        color: darkblue;
+        font-family: monospace;
+    }
+</style>
+
+<h2>Szczegóły</h2>
+
+<div>
+    <h4>Uczestnika</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pseudonim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pseudonim)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.uczestnikId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

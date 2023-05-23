@@ -1,0 +1,26 @@
+﻿@model Loteria.Models.DbModels.Nagroda
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nagroda</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nagroda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nagroda)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.nagrodaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

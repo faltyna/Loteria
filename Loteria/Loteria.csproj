@@ -128,6 +128,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NagrodasController.cs" />
+    <Compile Include="Controllers\OdpowiedzsController.cs" />
+    <Compile Include="Controllers\PytaniesController.cs" />
+    <Compile Include="Controllers\UczestniksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +198,26 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Uczestniks\Create.cshtml" />
+    <Content Include="Views\Uczestniks\Delete.cshtml" />
+    <Content Include="Views\Uczestniks\Details.cshtml" />
+    <Content Include="Views\Uczestniks\Edit.cshtml" />
+    <Content Include="Views\Uczestniks\Index.cshtml" />
+    <Content Include="Views\Pytanies\Create.cshtml" />
+    <Content Include="Views\Pytanies\Delete.cshtml" />
+    <Content Include="Views\Pytanies\Details.cshtml" />
+    <Content Include="Views\Pytanies\Edit.cshtml" />
+    <Content Include="Views\Pytanies\Index.cshtml" />
+    <Content Include="Views\Odpowiedzs\Create.cshtml" />
+    <Content Include="Views\Odpowiedzs\Delete.cshtml" />
+    <Content Include="Views\Odpowiedzs\Details.cshtml" />
+    <Content Include="Views\Odpowiedzs\Edit.cshtml" />
+    <Content Include="Views\Odpowiedzs\Index.cshtml" />
+    <Content Include="Views\Nagrodas\Create.cshtml" />
+    <Content Include="Views\Nagrodas\Delete.cshtml" />
+    <Content Include="Views\Nagrodas\Details.cshtml" />
+    <Content Include="Views\Nagrodas\Edit.cshtml" />
+    <Content Include="Views\Nagrodas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
