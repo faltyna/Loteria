@@ -4,10 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    h2 {
+        color: darkblue;
+        font-family: monospace;
+    }
+
+    .table {
+        background-color: aliceblue;
+    }
+</style>
+
+<h2>Pytania</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj pytanie", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +34,9 @@
             @Html.DisplayFor(modelItem => item.tresc)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.pytanieId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.pytanieId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.pytanieId })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.pytanieId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.pytanieId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.pytanieId })
         </td>
     </tr>
 }

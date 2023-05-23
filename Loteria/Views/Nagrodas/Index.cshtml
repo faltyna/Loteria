@@ -4,10 +4,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<style>
+    h2 {
+        color: darkblue;
+        font-family: monospace;
+    }
+
+    h4 {
+        color: darkblue;
+        font-family: monospace;
+    }
+</style>
+
+<h2>Nagrody</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Dodaj nagrodę", "Create")
 </p>
 <table class="table">
     <tr>
@@ -23,9 +35,9 @@
             @Html.DisplayFor(modelItem => item.nagroda)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.nagrodaId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.nagrodaId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.nagrodaId })
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.nagrodaId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.nagrodaId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.nagrodaId })
         </td>
     </tr>
 }

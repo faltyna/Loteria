@@ -4,7 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<style>
+    h2 {
+        color: darkblue;
+        font-family: monospace;
+    }
+
+    h4 {
+        color: darkblue;
+        font-family: monospace;
+    }
+</style>
+
+<h2>Edytuj</h2>
 
 
 @using (Html.BeginForm())
@@ -12,7 +24,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Pytanie</h4>
+        <h4>Pytania</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.pytanieId)
@@ -34,7 +46,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Wróć do listy", "Index")
 </div>
 
 @section Scripts {

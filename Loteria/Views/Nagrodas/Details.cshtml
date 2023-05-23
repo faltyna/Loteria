@@ -4,10 +4,22 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<style>
+    h2 {
+        color: darkblue;
+        font-family: monospace;
+    }
+
+    h4 {
+        color: darkblue;
+        font-family: monospace;
+    }
+</style>
+
+<h2>Szczegóły</h2>
 
 <div>
-    <h4>Nagroda</h4>
+    <h4>Nagrody</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -21,6 +33,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.nagrodaId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.nagrodaId }) |
+    @Html.ActionLink("Wróć do listy", "Index")
 </p>
