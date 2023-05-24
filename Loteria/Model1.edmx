@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BookAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nagrodas">
+          <Key>
+            <PropertyRef Name="nagrodaId" />
+          </Key>
+          <Property Name="nagrodaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nagroda" Type="nvarchar(max)" />
+          <Property Name="Uczestnik_uczestnikId" Type="int" />
+        </EntityType>
+        <EntityType Name="Odpowiedzs">
+          <Key>
+            <PropertyRef Name="odpowiedzId" />
+          </Key>
+          <Property Name="odpowiedzId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tresc" Type="nvarchar(max)" />
+          <Property Name="poprawnoscOdpowiedzi" Type="bit" Nullable="false" />
+          <Property Name="pytanieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pytanies">
+          <Key>
+            <PropertyRef Name="pytanieId" />
+          </Key>
+          <Property Name="pytanieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tresc" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Uczestniks">
+          <Key>
+            <PropertyRef Name="uczestnikId" />
+          </Key>
+          <Property Name="uczestnikId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="imie" Type="nvarchar(max)" />
+          <Property Name="nazwisko" Type="nvarchar(max)" />
+          <Property Name="pseudonim" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId">
+          <End Role="Uczestniks" Type="Self.Uczestniks" Multiplicity="0..1" />
+          <End Role="Nagrodas" Type="Self.Nagrodas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uczestniks">
+              <PropertyRef Name="uczestnikId" />
+            </Principal>
+            <Dependent Role="Nagrodas">
+              <PropertyRef Name="Uczestnik_uczestnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId">
+          <End Role="Pytanies" Type="Self.Pytanies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Odpowiedzs" Type="Self.Odpowiedzs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytanies">
+              <PropertyRef Name="pytanieId" />
+            </Principal>
+            <Dependent Role="Odpowiedzs">
+              <PropertyRef Name="pytanieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookAppModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nagrodas" EntityType="Self.Nagrodas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Odpowiedzs" EntityType="Self.Odpowiedzs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pytanies" EntityType="Self.Pytanies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uczestniks" EntityType="Self.Uczestniks" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId" Association="Self.FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId">
+            <End Role="Uczestniks" EntitySet="Uczestniks" />
+            <End Role="Nagrodas" EntitySet="Nagrodas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId" Association="Self.FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId">
+            <End Role="Pytanies" EntitySet="Pytanies" />
+            <End Role="Odpowiedzs" EntitySet="Odpowiedzs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BookAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Nagrodas">
+          <Key>
+            <PropertyRef Name="nagrodaId" />
+          </Key>
+          <Property Name="nagrodaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nagroda" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Uczestnik_uczestnikId" Type="Int32" />
+          <NavigationProperty Name="Uczestniks" Relationship="Self.FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId" FromRole="Nagrodas" ToRole="Uczestniks" />
+        </EntityType>
+        <EntityType Name="Odpowiedzs">
+          <Key>
+            <PropertyRef Name="odpowiedzId" />
+          </Key>
+          <Property Name="odpowiedzId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tresc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="poprawnoscOdpowiedzi" Type="Boolean" Nullable="false" />
+          <Property Name="pytanieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pytanies" Relationship="Self.FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId" FromRole="Odpowiedzs" ToRole="Pytanies" />
+        </EntityType>
+        <EntityType Name="Pytanies">
+          <Key>
+            <PropertyRef Name="pytanieId" />
+          </Key>
+          <Property Name="pytanieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tresc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Odpowiedzs" Relationship="Self.FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId" FromRole="Pytanies" ToRole="Odpowiedzs" />
+        </EntityType>
+        <EntityType Name="Uczestniks">
+          <Key>
+            <PropertyRef Name="uczestnikId" />
+          </Key>
+          <Property Name="uczestnikId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="imie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nazwisko" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pseudonim" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Nagrodas" Relationship="Self.FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId" FromRole="Uczestniks" ToRole="Nagrodas" />
+        </EntityType>
+        <Association Name="FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId">
+          <End Role="Uczestniks" Type="Self.Uczestniks" Multiplicity="0..1" />
+          <End Role="Nagrodas" Type="Self.Nagrodas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uczestniks">
+              <PropertyRef Name="uczestnikId" />
+            </Principal>
+            <Dependent Role="Nagrodas">
+              <PropertyRef Name="Uczestnik_uczestnikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId">
+          <End Role="Pytanies" Type="Self.Pytanies" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Odpowiedzs" Type="Self.Odpowiedzs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pytanies">
+              <PropertyRef Name="pytanieId" />
+            </Principal>
+            <Dependent Role="Odpowiedzs">
+              <PropertyRef Name="pytanieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BookAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="Nagrodas" EntityType="Self.Nagrodas" />
+          <EntitySet Name="Odpowiedzs" EntityType="Self.Odpowiedzs" />
+          <EntitySet Name="Pytanies" EntityType="Self.Pytanies" />
+          <EntitySet Name="Uczestniks" EntityType="Self.Uczestniks" />
+          <AssociationSet Name="FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId" Association="Self.FK_dbo_Nagrodas_dbo_Uczestniks_Uczestnik_uczestnikId">
+            <End Role="Uczestniks" EntitySet="Uczestniks" />
+            <End Role="Nagrodas" EntitySet="Nagrodas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId" Association="Self.FK_dbo_Odpowiedzs_dbo_Pytanies_pytanieId">
+            <End Role="Pytanies" EntitySet="Pytanies" />
+            <End Role="Odpowiedzs" EntitySet="Odpowiedzs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BookAppModelStoreContainer" CdmEntityContainer="BookAppEntities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="BookAppModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nagrodas">
+            <EntityTypeMapping TypeName="BookAppModel.Nagrodas">
+              <MappingFragment StoreEntitySet="Nagrodas">
+                <ScalarProperty Name="nagrodaId" ColumnName="nagrodaId" />
+                <ScalarProperty Name="nagroda" ColumnName="nagroda" />
+                <ScalarProperty Name="Uczestnik_uczestnikId" ColumnName="Uczestnik_uczestnikId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Odpowiedzs">
+            <EntityTypeMapping TypeName="BookAppModel.Odpowiedzs">
+              <MappingFragment StoreEntitySet="Odpowiedzs">
+                <ScalarProperty Name="odpowiedzId" ColumnName="odpowiedzId" />
+                <ScalarProperty Name="tresc" ColumnName="tresc" />
+                <ScalarProperty Name="poprawnoscOdpowiedzi" ColumnName="poprawnoscOdpowiedzi" />
+                <ScalarProperty Name="pytanieId" ColumnName="pytanieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pytanies">
+            <EntityTypeMapping TypeName="BookAppModel.Pytanies">
+              <MappingFragment StoreEntitySet="Pytanies">
+                <ScalarProperty Name="pytanieId" ColumnName="pytanieId" />
+                <ScalarProperty Name="tresc" ColumnName="tresc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uczestniks">
+            <EntityTypeMapping TypeName="BookAppModel.Uczestniks">
+              <MappingFragment StoreEntitySet="Uczestniks">
+                <ScalarProperty Name="uczestnikId" ColumnName="uczestnikId" />
+                <ScalarProperty Name="imie" ColumnName="imie" />
+                <ScalarProperty Name="nazwisko" ColumnName="nazwisko" />
+                <ScalarProperty Name="pseudonim" ColumnName="pseudonim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
